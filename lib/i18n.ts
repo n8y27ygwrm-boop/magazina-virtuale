@@ -68,6 +68,25 @@ export const CAT_LABELS: Record<Lang, Record<string, string>> = {
     BIRRAB: "BIRRA BELGE",
     BIRRAV: "BIRRA VENDI",
     PAKETA: "PAKETA & OFERTA",
+    VERE: "VERË",
+    WHISKEY: "WHISKEY",
+    GIN: "GIN",
+    RUM: "RUM",
+    COGNAC: "COGNAC & BRANDY",
+    MONIN: "MONIN",
+    PAK_KARTONI: "KUTI & AMBALAZHE KARTONI",
+    PAK_ALUMINI: "VASKETE & TAVË ALUMINI",
+    PAK_SUGARCANE: "VASKETE SUGARCANE",
+    PAK_TAS: "TAS & SALLATË",
+    PAK_PLASTIK: "KONTENJERË PLASTIKË",
+    PAK_MIKROVALE: "PAKETIM PËR MIKROVALË",
+    PAK_GOTA: "GOTA",
+    PAK_KRISTAL: "ËMBËLSIRA & KRISTAL",
+    PAK_SETE: "PIRUN, LUGË, THIKË & SETE SERVISI",
+    PAK_PIPA: "PIPA & SHKOPINJ",
+    PAK_LETRA: "LETRA, PELIKOLA & MBULESA",
+    PAK_SALCIERE: "SALCIERE",
+    PAK_TJERA: "TË TJERA",
   },
   tr: {
     MIELL: "UN",
@@ -91,10 +110,31 @@ export const CAT_LABELS: Record<Lang, Record<string, string>> = {
     BIRRAB: "BELÇIKA BİRASI",
     BIRRAV: "YEREL BİRA",
     PAKETA: "PAKETLER & TEKLİFLER",
+    VERE: "ŞARAP",
+    WHISKEY: "VİSKİ",
+    GIN: "CİN",
+    RUM: "ROM",
+    COGNAC: "KONYAK & BRENDI",
+    MONIN: "MONIN",
+    PAK_KARTONI: "KARTON KUTULAR & AMBALAJLAR",
+    PAK_ALUMINI: "ALÜMİNYUM KAPLAR",
+    PAK_SUGARCANE: "SUGARCANE KAPLAR",
+    PAK_TAS: "KASELER & SALATALAR",
+    PAK_PLASTIK: "PLASTİK KAPLAR",
+    PAK_MIKROVALE: "MİKRODALGA AMBALAJLARI",
+    PAK_GOTA: "BARDAKLAR",
+    PAK_KRISTAL: "TATLI & KRİSTAL",
+    PAK_SETE: "ÇATAL, KAŞIK, BIÇAK & SERVİS SETLERİ",
+    PAK_PIPA: "PİPETLER & ÇUBUKLAR",
+    PAK_LETRA: "KAĞITLAR, FOLYOLAR & ÖRTÜLER",
+    PAK_SALCIERE: "SOS KAPLARI",
+    PAK_TJERA: "DİĞERLERİ",
   },
 };
 
-const ALWAYS_TOP = ["PIJE", "UJE", "BIRRA", "BIRRAB", "BIRRAV"];
+const ALWAYS_TOP = ["PIJE","UJE","BIRRA","BIRRAB","BIRRAV","VERE","WHISKEY","GIN","RUM","COGNAC","MONIN"];
+
+const ALWAYS_LAST = ["PAK_KARTONI","PAK_ALUMINI","PAK_SUGARCANE","PAK_TAS","PAK_PLASTIK","PAK_MIKROVALE","PAK_GOTA","PAK_KRISTAL","PAK_SETE","PAK_PIPA","PAK_LETRA","PAK_SALCIERE","PAK_TJERA"];
 
 const BASE_ORDER: Record<string, string[]> = {
   Restorant: ["PASTA","SALCA","MISHK","MISHB","PESHKU","BULMET","FRUTA","ORIZ","KONSERVA","GATIM","MISHP","SNACK","BRUME","MIELL","EMBELSIRA","PAKETA"],
@@ -121,5 +161,5 @@ const TR_TO_SQ: Record<string, string> = {
 export function getCategoryOrder(business: string): string[] {
   const key = TR_TO_SQ[business] ?? business;
   const base = BASE_ORDER[key] ?? BASE_ORDER.Restorant;
-  return [...ALWAYS_TOP, ...base];
+  return [...ALWAYS_TOP, ...base, ...ALWAYS_LAST];
 }
